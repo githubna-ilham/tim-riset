@@ -19,15 +19,15 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // AdminSeeder
-        // $this->call(AdminSeeder::class);
+        $this->call(AdminSeeder::class);
         // CustomerSeeder
-        // $this->call(CustomerSeeder::class);
+        $this->call(CustomerSeeder::class);
         // kendaraanSeeder
-        // $this->call(KendaraanSeeder::class);
+        $this->call(KendaraanSeeder::class);
         // KategoriSparepartSeeder
-        // $this->call(KategoriSparepartSeeder::class);
+        $this->call(KategoriSparepartSeeder::class);
         // SparepartSeeder
-        // $this->call(SparepartSeeder::class);
+        $this->call(SparepartSeeder::class);
         // TransaksiSeeder
         $this->call(TransaksiSeeder::class);
     }
