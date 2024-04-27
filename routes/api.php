@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/candra-dev', function () {
-    return view('Helo ini Candra!');
+    return view('Helo Candra!');
 });
