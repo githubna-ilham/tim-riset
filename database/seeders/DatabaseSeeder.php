@@ -29,6 +29,14 @@ class DatabaseSeeder extends Seeder
         // SparepartSeeder
         // $this->call(SparepartSeeder::class);
         // TransaksiSeeder
+        // $this->call(TransaksiSeeder::class);
+
+        $this->call(AdminSeeder::class);
+        $this->call(CustomerSeeder::class);
+        $this->call(KendaraanSeeder::class);
+        $this->call(KategoriSparepartSeeder::class);
+        $this->call(SparepartSeeder::class);
         $this->call(TransaksiSeeder::class);
+
     }
 }
