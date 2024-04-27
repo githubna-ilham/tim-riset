@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/nama', function() {
+Route::get('/nama', function () {
     return ('Ananda Rizky Maulana');
 });
