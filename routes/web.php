@@ -19,5 +19,4 @@ Route::get('/', function () {
 
 Route::get('/root', function () {;
     return "Punya Aidil";
-
 });
