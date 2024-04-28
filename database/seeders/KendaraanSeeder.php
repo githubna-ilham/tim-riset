@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class KendaraanSeeder extends Seeder
 {
@@ -14,16 +16,20 @@ class KendaraanSeeder extends Seeder
      */
     public function run()
     {
+        $customer_id_1 = Customer::where('username', 'customer1')->value('customer_id');
+        $customer_id_2 = Customer::where('username', 'customer2')->value('customer_id');
         $kendaraans = [
             [
-                'customer_id' => 1, // Sesuaikan dengan ID customer
+                'kendaraan_id' => Str::uuid(),
+                'customer_id' => $customer_id_1, // Sesuaikan dengan ID customer
                 'jenis_kendaraan' => 'Mobil',
                 'nomor_polisi' => 'B 1234 ABC',
                 'merk' => 'Toyota',
                 'tahun' => '2020',
             ],
             [
-                'customer_id' => 2, // Sesuaikan dengan ID customer
+                'kendaraan_id' => Str::uuid(),
+                'customer_id' => $customer_id_2, // Sesuaikan dengan ID customer
                 'jenis_kendaraan' => 'Motor',
                 'nomor_polisi' => 'L 5678 XYZ',
                 'merk' => 'Honda',

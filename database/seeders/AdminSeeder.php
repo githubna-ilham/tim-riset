@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminSeeder extends Seeder
 {
@@ -17,6 +18,8 @@ class AdminSeeder extends Seeder
     {
         $admins = [
             [
+                // generate uuid for admin_id here
+                'admin_id' => Str::uuid(),
                 'username' => 'admin1',
                 'password' => Hash::make('password123'),
                 'nama_admin' => 'Admin Satu',
@@ -24,6 +27,7 @@ class AdminSeeder extends Seeder
                 'no_telp' => '081234567891',
             ],
             [
+                'admin_id' => Str::uuid(),
                 'username' => 'admin2',
                 'password' => Hash::make('password456'),
                 'nama_admin' => 'Admin Dua',
