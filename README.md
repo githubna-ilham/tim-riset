@@ -8,6 +8,10 @@
 -   Ketika perintah "php artisan db:seed"
 -   Coba jalankan "php artisan serve"
 
+## Perhatian
+
+setiap mulai ngoding, jangan lupa untuk Pull dari branch develop
+
 ## Akun Contoh Admin
 
 url : http://127.0.0.1:8000/login-admin
