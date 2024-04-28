@@ -10,7 +10,7 @@
 
 ## Perhatian
 
-setiap mulai ngoding, jangan lupa untuk Pull dari branch develop
+Setiap mulai ngoding, jangan lupa untuk Pull dari branch develop, kemudian push ke branch masing masing
 
 ## Akun Contoh Admin
 
