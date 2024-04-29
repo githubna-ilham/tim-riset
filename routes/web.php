@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\LoginCustomerController;
 use App\Http\Controllers\CustomerDashboardController;
+use App\Http\Controllers\KategoriSparepartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,7 @@ Route::middleware('auth:customer')->prefix('customer')->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
 });
+
+// Rute untuk KategoriSparepart
+Route::resource('categories', KategoriSparepartController::class);
+
