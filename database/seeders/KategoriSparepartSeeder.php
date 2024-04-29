@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class KategoriSparepartSeeder extends Seeder
 {
@@ -16,12 +17,15 @@ class KategoriSparepartSeeder extends Seeder
     {
         $kategoris = [
             [
+                'kategori_id' => Str::uuid(),
                 'nama_kategori' => 'Oli',
             ],
             [
+                'kategori_id' => Str::uuid(),
                 'nama_kategori' => 'Ban',
             ],
             [
+                'kategori_id' => Str::uuid(),
                 'nama_kategori' => 'Filter',
             ],
             // Tambahkan data kategori sparepart lainnya sesuai kebutuhan

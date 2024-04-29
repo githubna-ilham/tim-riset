@@ -9,7 +9,7 @@ class CreateKategoriSparepartTable extends Migration
     public function up()
     {
         Schema::create('kategori_sparepart', function (Blueprint $table) {
-            $table->id('kategori_id');
+            $table->uuid('kategori_id')->primary();
             $table->string('nama_kategori');
             $table->timestamps();
         });
