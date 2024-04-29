@@ -29,6 +29,9 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
 
     // Route untuk Control Akun
     Route::get('/dashboard/kontrol-pengguna', [AdminDashboardController::class, 'KontrolPengguna'])->name('admin.kontrol-pengguna');
+    Route::get('/dashboard/kontrol-pengguna/buat-akun', [AdminDashboardController::class, 'BuatAkun'])->name('admin.buat-akun-pengguna');
+    Route::post('/dashboard/kontrol-pengguna/proses-buat-akun', [AdminDashboardController::class, 'ProsesBuatAkun'])->name('admin.proses-buat-akun');
+    Route::get('/dashboard/kontrol-pengguna/{customer_id}/edit_pengguna', [AdminDashboardController::class, 'EditAkun'])->name('admin.edit-akun-pengguna');
     Route::delete('/dashboard/kontrol-pengguna/{customer_id}', [AdminDashboardController::class, 'HapusAkun'])->name('admin.hapus-akun');
 });
 

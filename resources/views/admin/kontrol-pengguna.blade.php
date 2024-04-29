@@ -18,8 +18,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
-                                <th>Alamat</th>
-                                <th>No. Telepon</th>
+                                <th>No.Telp</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -29,10 +28,9 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $user->nama_customer }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->alamat }}</td>
                                     <td>{{ $user->no_telp }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="{{ route('admin.edit-akun-pengguna', $user->customer_id) }}" class="btn btn-primary btn-sm">Edit</a>
                                         <form action='{{ route('admin.hapus-akun', $user->customer_id) }}' method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -45,7 +43,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="#" class="btn btn-primary btn-sm">Tambah Akun Customer</a>
+                <a href="{{ route('admin.buat-akun-pengguna') }}" class="btn btn-primary btn-sm">Tambah Akun Customer</a>
             </div>
     </div>
 @endsection
