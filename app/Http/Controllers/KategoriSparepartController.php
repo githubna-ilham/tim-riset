@@ -12,8 +12,8 @@ class KategoriSparepartController extends Controller
      */
     public function index()
     {
-        $categories = KategoriSparepart::all();
-        return view('categories.index', compact('categories'));
+        $kategori = KategoriSparepart::all();
+        return view('admin.kategorisparepart.index', compact('kategori'));
     }
 
     /**
@@ -21,7 +21,7 @@ class KategoriSparepartController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('admin.kategorisparepart.tambah-kategori');
     }
 
     /**
@@ -34,7 +34,7 @@ class KategoriSparepartController extends Controller
         ]);
 
         KategoriSparepart::create($validateData);
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.kategorisparepart.index')->with('success', 'Kategori berhasil ditambahkan');
     }
 
     /**
@@ -42,7 +42,7 @@ class KategoriSparepartController extends Controller
      */
     public function show(KategoriSparepart $kategoriSparepart)
     {
-        return view('categories.show', compact('kategoriSparepart'));
+        return view('admin.kategorisparepart.show', compact('kategoriSparepart'));
     }
 
     /**
@@ -70,8 +70,8 @@ class KategoriSparepartController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(KategoriSparepart $kategoriSparepart)
-    {
-        $kategoriSparepart->delete();
-        return redirect()->route('categories.index');
-    }
+{
+    $kategoriSparepart->delete( );
+    return redirect()->route('admin.kategorisparepart.index')->with('berhasil', 'Kategori berhasil dihapus');
+}
 }
