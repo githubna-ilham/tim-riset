@@ -41,10 +41,12 @@ class AdminDashboardController extends Controller
     {
         $ValidasiData = Validator::make($request->all(), [
             'nama_lengkap' => 'required',
-            'username' => 'required|unique:customers',
+            'username' => 'required|unique:customers|regex:/^[a-zA-Z0-9_]+$/',
             'email' => 'required|email',
             'phone' => 'required|numeric',
             'password' => 'required|min:8|confirmed'
+        ], [
+            'username.regex' => 'Special Character hanya bisa "_"'
         ]);
 
         if ($ValidasiData->fails()) {
