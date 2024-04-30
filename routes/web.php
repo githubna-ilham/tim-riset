@@ -31,7 +31,8 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::get('/dashboard/kontrol-pengguna', [AdminDashboardController::class, 'KontrolPengguna'])->name('admin.kontrol-pengguna');
     Route::get('/dashboard/kontrol-pengguna/buat-akun', [AdminDashboardController::class, 'BuatAkun'])->name('admin.buat-akun-pengguna');
     Route::post('/dashboard/kontrol-pengguna/proses-buat-akun', [AdminDashboardController::class, 'ProsesBuatAkun'])->name('admin.proses-buat-akun');
-    Route::get('/dashboard/kontrol-pengguna/{customer_id}/edit_pengguna', [AdminDashboardController::class, 'EditAkun'])->name('admin.edit-akun-pengguna');
+    Route::get('/dashboard/kontrol-pengguna/edit_pengguna/{customer_id}', [AdminDashboardController::class, 'EditAkun'])->name('admin.edit-akun-pengguna');
+    Route::post('/dashboard/kontrol-pengguna/ganti-password/{customer_id}', [AdminDashboardController::class, 'GantiPassword'])->name('admin.ganti-password-pengguna');
     Route::delete('/dashboard/kontrol-pengguna/{customer_id}', [AdminDashboardController::class, 'HapusAkun'])->name('admin.hapus-akun');
 });
 
@@ -46,4 +47,8 @@ Route::post('/logout-customer', [LoginCustomerController::class, 'logout'])->nam
 Route::middleware('auth:customer')->prefix('customer')->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
+
+    // Route untuk Profile customer
+    Route::get('/dashboard/profile', [CustomerDashboardController::class, 'Profile'])->name('customer.profile');
+    Route::post('/dashboard/profile/ganti-password', [CustomerDashboardController::class, 'GantiPassword'])->name('customer.profile-ganti-password');
 });

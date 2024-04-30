@@ -1,11 +1,11 @@
-@extends('layouts-admin.dashboard-admin')
+@extends('layouts-customer.dashboard-customer')
 @section('page-content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Edit Akun, {{ $customer->nama_customer }}</h1>
+            <h1 class="h3 mb-0 text-gray-800">Hallo, {{ $user->nama_customer }}</h1>
         </div>
         <!-- Content Row -->
         <div class="container-fluid">
@@ -19,19 +19,19 @@
                             <!-- Formulir data diri -->
                             <div class="mb-3">
                                 <p class="text-dark">Nama Lengkap:</p>
-                                <p>{{ $customer->nama_customer }}</p>
+                                <p>{{ $user->nama_customer }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Username:</p>
-                                <p>{{ $customer->username }}</p>
+                                <p>{{ $user->username }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Email:</p>
-                                <p>{{ $customer->email }}</p>
+                                <p>{{ $user->email }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Nomor Telepon:</p>
-                                <p>{{ $customer->no_telp }}</p>
+                                <p>{{ $user->no_telp }}</p>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="card-body">
                             <!-- Formulir unggah gambar -->
-                            <form action="{{ route('admin.ganti-password-pengguna', $customer->customer_id  ) }}" method="POST">
+                            <form action="{{ route('customer.profile-ganti-password') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="forsm-label">New Password</label>
@@ -61,6 +61,12 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
+                            {{-- password berhasil diganti --}}
+                            @if (session('success'))
+                                <div class="alert alert-success mt-3">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

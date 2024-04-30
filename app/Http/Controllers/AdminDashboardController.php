@@ -42,7 +42,7 @@ class AdminDashboardController extends Controller
         $ValidasiData = Validator::make($request->all(), [
             'nama_lengkap' => 'required',
             'username' => 'required|unique:customers|regex:/^[a-zA-Z0-9_]+$/',
-            'email' => 'required|email',
+            'email' => 'required|email:dns',
             'phone' => 'required|numeric',
             'password' => 'required|min:8|confirmed'
         ], [
@@ -68,5 +68,22 @@ class AdminDashboardController extends Controller
     {
         $customer = Customer::findOrFail($customer_id);
         return view('admin.edit-akun-pengguna', compact('customer'));
+    }
+
+    public function GantiPassword(Request $request, $customer_id)
+    {
+        $ValidasiData = Validator::make($request->all(), [
+            'password' => 'required|min:8|confirmed'
+        ]);
+
+        if ($ValidasiData->fails()) {
+            return redirect()->back()->withInput()->withErrors($ValidasiData);
+        }
+
+        $customer = Customer::findOrFail($customer_id);
+        $customer->password = Hash::make($request->password);
+        $customer->save();
+
+        return redirect()->route('admin.kontrol-pengguna')->with('success', 'Password berhasil diubah');
     }
 }
