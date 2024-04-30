@@ -27,9 +27,21 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
-    // Route untuk Control Akun
-    Route::get('/dashboard/kontrol-pengguna', [AdminDashboardController::class, 'KontrolPengguna'])->name('admin.kontrol-pengguna');
-    Route::delete('/dashboard/kontrol-pengguna/{customer_id}', [AdminDashboardController::class, 'HapusAkun'])->name('admin.hapus-akun');
+    // Route untuk Control Akun Admin
+    Route::get('/dashboard/kontrol-akun-admin', [AdminDashboardController::class, 'KontrolAkunAdmin'])->name('admin.kontrol-akun-admin');
+    Route::delete('/dashboard/kontrol-akun-admin/{admin_id}', [AdminDashboardController::class, 'HapusAkunAdmin'])->name('admin.hapus-akun-admin');
+    Route::get('/dashboard/kontrol-akun-admin/buat-akun-admin', [AdminDashboardController::class, 'BuatAkunAdmin'])->name('admin.buat-akun-admin');
+    Route::post('/dashboard/kontrol-akun-admin/proses-buat-akun-admin', [AdminDashboardController::class, 'ProsesBuatAkunAdmin'])->name('admin.proses-buat-akun-admin');
+    Route::get('/dashboard/kontrol-akun-admin/edit_admin/{admin_id}', [AdminDashboardController::class, 'EditAkunAdmin'])->name('admin.edit-akun-admin');
+    Route::post('/dashboard/kontrol-akun-admin/ganti-password/{admin_id}', [AdminDashboardController::class, 'GantiPasswordAdmin'])->name('admin.ganti-password-admin');
+
+    // Route untuk Control Akun Customer
+    Route::get('/dashboard/kontrol-akun-pengguna', [AdminDashboardController::class, 'KontrolAkunPengguna'])->name('admin.kontrol-akun-pengguna');
+    Route::delete('/dashboard/kontrol-akun-pengguna/{customer_id}', [AdminDashboardController::class, 'HapusAkunPengguna'])->name('admin.hapus-akun-pengguna');
+    Route::get('/dashboard/kontrol-akun-pengguna/buat-akun-pengguna', [AdminDashboardController::class, 'BuatAkunPengguna'])->name('admin.buat-akun-pengguna');
+    Route::post('/dashboard/kontrol-akun-pengguna/proses-buat-akun-pengguna', [AdminDashboardController::class, 'ProsesBuatAkunPengguna'])->name('admin.proses-buat-akun-pengguna');
+    Route::get('/dashboard/kontrol-akun-pengguna/edit_pengguna/{customer_id}', [AdminDashboardController::class, 'EditAkunPengguna'])->name('admin.edit-akun-pengguna');
+    Route::post('/dashboard/kontrol-akun-pengguna/ganti-password/{customer_id}', [AdminDashboardController::class, 'GantiPasswordPengguna'])->name('admin.ganti-password-pengguna');
 });
 
 
