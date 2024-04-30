@@ -16,6 +16,12 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+        @if (session()->has('diubah'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('diubah') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
      
 
@@ -42,7 +48,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $k->nama_kategori }}</td>
                                     <td>
-                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="{{ route('admin.kategorisparepart.edit', $k->kategori_id) }}" class="btn btn-primary btn-sm">Edit</a>
                                         <form action='{{ route('admin.kategorisparepart.delete', $k->kategori_id) }}' method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')

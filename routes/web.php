@@ -38,7 +38,8 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
         Route::get('/tambah-kategori', [KategoriSparepartController::class, 'create'])->name('admin.kategorisparepart.tambah-kategori');
         Route::post('/tambah-kategori', [KategoriSparepartController::class, 'store'])->name('admin.kategorisparepart.store');
         Route::delete('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'destroy'])->name('admin.kategorisparepart.delete');
-
+        Route::get('/kategorisparepart/{kategorisparepart}/edit', [KategoriSparepartController::class, 'edit'])->name('admin.kategorisparepart.edit');
+        Route::put('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'update'])->name('admin.kategorisparepart.update');
 
 });
 

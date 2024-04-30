@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KategoriSparepart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KategoriSparepartController extends Controller
 {
@@ -48,30 +49,47 @@ class KategoriSparepartController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(KategoriSparepart $kategoriSparepart)
+    public function edit($kategori_id)
     {
-        return view('categories.edit', compact('kategoriSparepart'));
+        $kategori = KategoriSparepart::find($kategori_id);
+        
+        return view('admin.kategorisparepart.edit', compact('kategori')); //compact harus sama dengan variable kategori
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, KategoriSparepart $kategoriSparepart)
+    public function update(Request $request, $kategori_id)
     {
-        $validateData = $request->validate([
+        $validateData = Validator::make( $request->all(), [
             'nama_kategori' => 'required|string|max:255',
         ]);
 
-        $kategoriSparepart->update($validateData);
-        return redirect()->route('categories.index');
+        if ($validateData->fails()) {
+            return redirect()->back()->withInput()->withErrors($validateData);
+        }
+
+        $kategori = KategoriSparepart::find($kategori_id);
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->save();
+        return redirect()->route('admin.kategorisparepart.index')->with('diubah', 'Kategori berhasil diubah');
+
+        // $kategori->update($validateData);
+        // update nama kategori
+        // $kategori->nama_kategori = $request->nama_kategori;
+        // $kategori->save();
+        // return redirect()->route('admin.kategorisparepart.index')->with('diubah', 'Kategori berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KategoriSparepart $kategoriSparepart)
+    public function destroy($kategori_id)
 {
-    $kategoriSparepart->delete( );
+    $kategori = KategoriSparepart::find($kategori_id);
+
+    $kategori->sparepart()->delete();
+    $kategori->delete();
     return redirect()->route('admin.kategorisparepart.index')->with('berhasil', 'Kategori berhasil dihapus');
 }
 }
