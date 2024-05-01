@@ -25,6 +25,8 @@ Route::post('/logout-admin', [LoginAdminController::class, 'logout'])->name('log
 
 // Rute untuk dashboard admin
 Route::middleware('auth:admin')->prefix('admin')->group(function () {
+    // Laravel Notify
+    notify()->success('Berhasil Login Admin ⚡️') or notify()->success('Berhasil Login Admin ⚡️', 'My custom title');
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
@@ -64,6 +66,8 @@ Route::post('/logout-customer', [LoginCustomerController::class, 'logout'])->nam
 
 // Rute untuk dashboard customer
 Route::middleware('auth:customer')->prefix('customer')->group(function () {
+    // Laravel Notify
+    notify()->success('Berhasil Login Customer ⚡️') or notify()->success('Berhasil Login Customer ⚡️', 'My custom title');
     Route::get('/', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
 

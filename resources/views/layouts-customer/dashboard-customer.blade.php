@@ -19,6 +19,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     @yield('css-tambahan')
+    @notifyCss
 </head>
 
 <body class="page-top">
@@ -48,6 +49,8 @@
     </div>
     <!-- End of Page Wrapper -->
 
+    <x-notify::notify />
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
@@ -64,6 +67,9 @@
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
     @yield('js-tambahan')
+
+    @notifyJs
+
 
 </body>
 
