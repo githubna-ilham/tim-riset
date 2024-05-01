@@ -78,8 +78,8 @@ Route::middleware('auth:customer')->prefix('customer')->group(function () {
     notify()->success('Berhasil Login Customer ⚡️') or notify()->success('Berhasil Login Customer ⚡️', 'My custom title');
     Route::get('/', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
-});
 
-Route::get('/nama', function () {
-    return ('Ananda Rizky Maulana');
+    // Route untuk Profile customer
+    Route::get('/dashboard/profile', [CustomerDashboardController::class, 'Profile'])->name('customer.profile');
+    Route::post('/dashboard/profile/ganti-password', [CustomerDashboardController::class, 'GantiPassword'])->name('customer.profile-ganti-password');
 });

@@ -257,3 +257,4 @@ class AdminDashboardController extends Controller
         return redirect()->route('admin.kontrol-sparepart')->with('success', 'Informasi sparepart berhasil diperbarui');
     }
 }
+
