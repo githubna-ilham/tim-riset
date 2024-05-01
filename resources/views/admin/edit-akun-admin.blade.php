@@ -5,7 +5,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Edit Akun, {{ $customer->nama_customer }}</h1>
+            <h1 class="h3 mb-0 text-gray-800">Edit Akun, {{ $admin->nama_admin }}</h1>
         </div>
         <!-- Content Row -->
         <div class="container-fluid">
@@ -19,19 +19,19 @@
                             <!-- Formulir data diri -->
                             <div class="mb-3">
                                 <p class="text-dark">Nama Lengkap:</p>
-                                <p>{{ $customer->nama_customer }}</p>
+                                <p>{{ $admin->nama_admin }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Username:</p>
-                                <p>{{ $customer->username }}</p>
+                                <p>{{ $admin->username }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Email:</p>
-                                <p>{{ $customer->email }}</p>
+                                <p>{{ $admin->email }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Nomor Telepon:</p>
-                                <p>{{ $customer->no_telp }}</p>
+                                <p>{{ $admin->no_telp }}</p>
                             </div>
                         </div>
                     </div>
@@ -43,8 +43,7 @@
                         </div>
                         <div class="card-body">
                             <!-- Formulir unggah gambar -->
-                            <form action="{{ route('admin.ganti-password-pengguna', $customer->customer_id) }}"
-                                method="POST">
+                            <form action="{{ route('admin.ganti-password-admin', $admin->admin_id) }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="forsm-label">New Password</label>
