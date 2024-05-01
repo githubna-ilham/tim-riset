@@ -74,14 +74,32 @@
     <!-- Nav Item - Pages Collapse Pengguna -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+        aria-expanded="true" aria-controls="collapsePages">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Customers</span>
+    </a>
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Kelola Akun:</h6>
+                <a class="collapse-item" href="{{ route('admin.kontrol-akun-pengguna') }}">Details</a>
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Other Pages:</h6>
+                <a class="collapse-item" href="blank.html">Blank Page</a>
+            </div>
+        </div>
+    </li>
+    
+    <!-- Nav Item - Pages Collapse Sparepart -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Customers</span>
+            <span>Sparepart</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Kelola Akun:</h6>
-                <a class="collapse-item" href="{{ route('admin.kontrol-akun-pengguna') }}">Details</a>
+                <h6 class="collapse-header">Kelola Sparepart:</h6>
+                <a class="collapse-item" href="{{ route('admin.kontrol-sparepart') }}">Details</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>
                 <a class="collapse-item" href="blank.html">Blank Page</a>

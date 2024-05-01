@@ -12,6 +12,7 @@ class CreateSparepartTable extends Migration
             $table->uuid('sparepart_id')->primary();
             $table->string('nama_sparepart');
             $table->decimal('harga', 10, 2);
+            $table->string('merk');
             $table->integer('stok');
             $table->uuid('kategori_id');
             $table->foreign('kategori_id')->references('kategori_id')->on('kategori_sparepart');

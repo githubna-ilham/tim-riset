@@ -42,6 +42,12 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::post('/dashboard/kontrol-akun-pengguna/proses-buat-akun-pengguna', [AdminDashboardController::class, 'ProsesBuatAkunPengguna'])->name('admin.proses-buat-akun-pengguna');
     Route::get('/dashboard/kontrol-akun-pengguna/edit_pengguna/{customer_id}', [AdminDashboardController::class, 'EditAkunPengguna'])->name('admin.edit-akun-pengguna');
     Route::post('/dashboard/kontrol-akun-pengguna/ganti-password/{customer_id}', [AdminDashboardController::class, 'GantiPasswordPengguna'])->name('admin.ganti-password-pengguna');
+    
+    // Route untuk Control Sparepart
+    Route::get('/dashboard/sparepart/kontrol-sparepart', [AdminDashboardController::class, 'KontrolSparepart'])->name('admin.kontrol-sparepart');
+    Route::delete('/dashboard/sparepart/kontrol-sparepart/{sparepart_id}', [AdminDashboardController::class, 'HapusSparepart'])->name('admin.hapus-sparepart');
+    Route::get('/dashboard/sparepart/kontrol-sparepart/edit_sparepart/{sparepart_id}', [AdminDashboardController::class, 'EditSparepart'])->name('admin.edit-sparepart');
+    Route::post('/dashboard/sparepart/kontrol-sparepart/edit_info_sparepart/{customer_id}', [AdminDashboardController::class, 'EditInfoSparepart'])->name('admin.edit-info-sparepart');
 });
 
 

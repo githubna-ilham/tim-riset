@@ -25,6 +25,7 @@ class SparepartSeeder extends Seeder
                 'sparepart_id' => Str::uuid(),
                 'nama_sparepart' => 'Oli Mesin',
                 'harga' => 50000,
+                'merk' => 'AHM',
                 'stok' => 50,
                 'kategori_id' => $kategori_id_1, // Sesuaikan dengan ID kategori
             ],
@@ -32,6 +33,7 @@ class SparepartSeeder extends Seeder
                 'sparepart_id' => Str::uuid(),
                 'nama_sparepart' => 'Ban Mobil',
                 'harga' => 800000,
+                'merk' => 'Suzuki',
                 'stok' => 20,
                 'kategori_id' => $kategori_id_2, // Sesuaikan dengan ID kategori
             ],
@@ -39,6 +41,7 @@ class SparepartSeeder extends Seeder
                 'sparepart_id' => Str::uuid(),
                 'nama_sparepart' => 'Filter Udara',
                 'harga' => 250000,
+                'merk' => 'Yamaha',
                 'stok' => 30,
                 'kategori_id' => $kategori_id_3, // Sesuaikan dengan ID kategori
             ],
