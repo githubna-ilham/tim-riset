@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\LoginCustomerController;
 use App\Http\Controllers\CustomerDashboardController;
+use App\Http\Controllers\KategoriSparepartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,22 @@ Route::post('/logout-admin', [LoginAdminController::class, 'logout'])->name('log
 
 // Rute untuk dashboard admin
 Route::middleware('auth:admin')->prefix('admin')->group(function () {
+    // Laravel Notify
+    notify()->success('Berhasil Login Admin ⚡️') or notify()->success('Berhasil Login Admin ⚡️', 'My custom title');
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+    // Route untuk Control Akun
+    Route::get('/dashboard/kontrol-pengguna', [AdminDashboardController::class, 'KontrolPengguna'])->name('admin.kontrol-pengguna');
+    Route::delete('/dashboard/kontrol-pengguna/{customer_id}', [AdminDashboardController::class, 'HapusAkun'])->name('admin.hapus-akun');
+
+    // Rute untuk KategoriSparepart
+    Route::get('/kategorisparepart', [KategoriSparepartController::class, 'index'])->name('admin.kategorisparepart.index');
+    Route::get('/tambah-kategori', [KategoriSparepartController::class, 'create'])->name('admin.kategorisparepart.tambah-kategori');
+    Route::post('/tambah-kategori', [KategoriSparepartController::class, 'store'])->name('admin.kategorisparepart.store');
+    Route::delete('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'destroy'])->name('admin.kategorisparepart.delete');
+    Route::get('/kategorisparepart/{kategorisparepart}/edit', [KategoriSparepartController::class, 'edit'])->name('admin.kategorisparepart.edit');
+    Route::put('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'update'])->name('admin.kategorisparepart.update');
 
     // Route untuk Control Akun Admin
     Route::get('/dashboard/kontrol-akun-admin', [AdminDashboardController::class, 'KontrolAkunAdmin'])->name('admin.kontrol-akun-admin');
@@ -59,6 +74,8 @@ Route::post('/logout-customer', [LoginCustomerController::class, 'logout'])->nam
 
 // Rute untuk dashboard customer
 Route::middleware('auth:customer')->prefix('customer')->group(function () {
+    // Laravel Notify
+    notify()->success('Berhasil Login Customer ⚡️') or notify()->success('Berhasil Login Customer ⚡️', 'My custom title');
     Route::get('/', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
 });
