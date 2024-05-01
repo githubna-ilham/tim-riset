@@ -57,7 +57,6 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::post('/dashboard/kontrol-akun-pengguna/proses-buat-akun-pengguna', [AdminDashboardController::class, 'ProsesBuatAkunPengguna'])->name('admin.proses-buat-akun-pengguna');
     Route::get('/dashboard/kontrol-akun-pengguna/edit_pengguna/{customer_id}', [AdminDashboardController::class, 'EditAkunPengguna'])->name('admin.edit-akun-pengguna');
     Route::post('/dashboard/kontrol-akun-pengguna/ganti-password/{customer_id}', [AdminDashboardController::class, 'GantiPasswordPengguna'])->name('admin.ganti-password-pengguna');
-
 });
 
 
