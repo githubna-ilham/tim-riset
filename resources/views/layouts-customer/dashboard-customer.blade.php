@@ -69,6 +69,7 @@
     @yield('js-tambahan')
     @notifyJs
 
+
 </body>
 
 </html>
