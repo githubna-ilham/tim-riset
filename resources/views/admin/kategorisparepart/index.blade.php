@@ -64,5 +64,6 @@
                 <a href="{{ route('admin.kategorisparepart.tambah-kategori') }}" class="btn btn-primary btn-sm">Tambah Kategori</a>
             </div>
         </div>
+        
     </div>
     @endsection
