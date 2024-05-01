@@ -128,6 +128,7 @@
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Kategori:</h6>
                 <a class="collapse-item" href="{{ route('admin.kategorisparepart.index') }}">Daftar Kategori</a>
+                
             </div>
         </div>
     </li>
