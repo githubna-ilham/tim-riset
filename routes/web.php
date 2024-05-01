@@ -79,3 +79,7 @@ Route::middleware('auth:customer')->prefix('customer')->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
 });
+
+Route::get('/nama', function () {
+    return ('Ananda Rizky Maulana');
+});
