@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\LoginCustomerController;
 use App\Http\Controllers\CustomerDashboardController;
+use App\Http\Controllers\KategoriSparepartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,16 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::post('/dashboard/kontrol-akun-pengguna/proses-buat-akun-pengguna', [AdminDashboardController::class, 'ProsesBuatAkunPengguna'])->name('admin.proses-buat-akun-pengguna');
     Route::get('/dashboard/kontrol-akun-pengguna/edit_pengguna/{customer_id}', [AdminDashboardController::class, 'EditAkunPengguna'])->name('admin.edit-akun-pengguna');
     Route::post('/dashboard/kontrol-akun-pengguna/ganti-password/{customer_id}', [AdminDashboardController::class, 'GantiPasswordPengguna'])->name('admin.ganti-password-pengguna');
+
+
+    // Rute untuk KategoriSparepart
+        Route::get('/kategorisparepart', [KategoriSparepartController::class, 'index'])->name('admin.kategorisparepart.index');
+        Route::get('/tambah-kategori', [KategoriSparepartController::class, 'create'])->name('admin.kategorisparepart.tambah-kategori');
+        Route::post('/tambah-kategori', [KategoriSparepartController::class, 'store'])->name('admin.kategorisparepart.store');
+        Route::delete('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'destroy'])->name('admin.kategorisparepart.delete');
+        Route::get('/kategorisparepart/{kategorisparepart}/edit', [KategoriSparepartController::class, 'edit'])->name('admin.kategorisparepart.edit');
+        Route::put('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'update'])->name('admin.kategorisparepart.update');
+
 });
 
 

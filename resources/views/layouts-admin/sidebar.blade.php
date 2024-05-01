@@ -83,8 +83,8 @@
                 <h6 class="collapse-header">Kelola Akun:</h6>
                 <a class="collapse-item" href="{{ route('admin.kontrol-akun-pengguna') }}">Details</a>
                 <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
+                <h6 class="collapse-header">Kategori:</h6>
+                <a class="collapse-item" href="{{ route('admin.kategorisparepart.index') }}">Daftar Kategori</a>
             </div>
         </div>
     </li>
