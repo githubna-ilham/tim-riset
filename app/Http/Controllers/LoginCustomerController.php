@@ -17,6 +17,7 @@ class LoginCustomerController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('customer')->attempt($credentials)) {
+            notify()->success('Berhasil login customer');
             // Jika berhasil login, redirect ke dashboard customer
             return redirect()->intended('/customer/dashboard');
         }
@@ -34,6 +35,7 @@ class LoginCustomerController extends Controller
         Auth::guard('customer')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        notify()->success('Berhasil logout');
         return redirect('/login');
     }
 }

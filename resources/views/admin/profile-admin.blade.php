@@ -5,7 +5,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Edit Akun, {{ $admin->nama_admin }}</h1>
+            <h1 class="h3 mb-0 text-gray-800">Hallo, {{ $admin->nama_admin }}</h1>
         </div>
         <!-- Content Row -->
         <div class="container-fluid">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="card-body">
                             <!-- Formulir unggah gambar -->
-                            <form action="{{ route('admin.ganti-password-admin', $admin->admin_id) }}" method="POST">
+                            <form action="#" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="forsm-label">New Password</label>
@@ -62,6 +62,12 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
+                            {{-- password berhasil diganti --}}
+                            @if (session('success'))
+                                <div class="alert alert-success mt-3">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

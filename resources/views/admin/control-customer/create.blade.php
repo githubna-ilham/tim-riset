@@ -5,18 +5,16 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Buat Akun Admin</h1>
+            <h1 class="h3 mb-0 text-gray-800">Buat Akun Customer</h1>
         </div>
 
         <!-- Content Row -->
         <div class="container-fluid w-75">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.proses-buat-akun-admin') }}" method="POST">
+                    <form action="{{ route('admin.control-customer.create') }}" method="POST">
                         @csrf
-
                         <h3 class="fs-4 text-dark">Data Diri</h3>
-
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
                             <input type="plain" class="form-control" name="nama_lengkap" placeholder="nama"
@@ -49,9 +47,7 @@
                                 <small">{{ $message }}</small>
                                 @enderror
                         </div>
-
                         <h3 class="fs-4 text-dark">Credential</h3>
-
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="password">

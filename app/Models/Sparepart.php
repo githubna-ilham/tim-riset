@@ -19,6 +19,7 @@ class Sparepart extends Model
         'kategori_id',
         'nama_sparepart',
         'merk',
+        'stok',
         'harga',
         'image',
     ];

@@ -14,18 +14,18 @@
             <div class="col-md-6">
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <form action="{{ route('admin.kategorisparepart.store') }}" method="POST">
+                        <form action="{{ route('admin.category.store') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="nama_kategori">Nama Kategori</label>
                                 <input type="text" class="form-control" name="nama_kategori" id="nama_kategori">
                             </div>
-                            <a href="{{ route('admin.kategorisparepart.index') }}"><button type="submit" class="btn btn-primary">Tambah</button></a>
+                            <a href="{{ route('admin.category.index') }}"><button type="submit"
+                                    class="btn btn-primary">Tambah</button></a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
