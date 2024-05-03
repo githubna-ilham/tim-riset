@@ -12,14 +12,16 @@
         <!-- Content table -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <form action="{{ route('admin.kategorisparepart.update', $kategori->kategori_id) }}" method="POST">
+                <form action="{{ route('admin.category.update', $categories->kategori_id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="nama_kategori">Nama Kategori</label>
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" value="{{ $kategori->nama_kategori }}">
+                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori"
+                            value="{{ $categories->nama_kategori }}">
                     </div>
-                    <a href="{{ route('admin.kategorisparepart.index') }}"><button type="submit" class="btn btn-primary">Simpan</button></a>
+                    <a href="{{ route('admin.category.index') }}"><button type="submit"
+                            class="btn btn-primary">Simpan</button></a>
                 </form>
             </div>
         </div>

@@ -12,7 +12,7 @@
         <div class="container-fluid w-75">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.proses-buat-akun-admin') }}" method="POST">
+                    <form action="{{ route('admin.control-admin.store') }}" method="POST">
                         @csrf
 
                         <h3 class="fs-4 text-dark">Data Diri</h3>

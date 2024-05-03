@@ -23,16 +23,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($customer as $user)
+                            @foreach ($customers as $user)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $user->nama_customer }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->no_telp }}</td>
                                     <td>
-                                        <a href="{{ route('admin.edit-akun-pengguna', $user->customer_id) }}"
+                                        <a href="{{ route('admin.control-customer.edit', $user->customer_id) }}"
                                             class="btn btn-primary btn-sm">Edit</a>
-                                        <form action='{{ route('admin.hapus-akun-pengguna', $user->customer_id) }}'
+                                        <form action="{{ route('admin.control-customer.delete', $user->customer_id) }}"
                                             method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -45,7 +45,8 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="{{ route('admin.buat-akun-pengguna') }}" class="btn btn-primary btn-sm">Tambah Akun Customer</a>
+                <a href="{{ route('admin.control-customer.create') }}" class="btn btn-primary btn-sm">Tambah Akun
+                    Customer</a>
             </div>
         </div>
     @endsection

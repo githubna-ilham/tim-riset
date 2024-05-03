@@ -3,27 +3,13 @@
 @section('page-content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-        
-        @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-        @if (session()->has('berhasil'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('berhasil') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-        @if (session()->has('diubah'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('diubah') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
 
-     
+
+        @if (session('notify'))
+            <div class="{{ session('notify.type') }}">
+                {{ session('notify.message') }}
+            </div>
+        @endif
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -43,13 +29,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                           @foreach ($kategori as $k)
+                            @foreach ($categories as $k)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $k->nama_kategori }}</td>
                                     <td>
-                                    <a href="{{ route('admin.kategorisparepart.edit', $k->kategori_id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action='{{ route('admin.kategorisparepart.delete', $k->kategori_id) }}' method="POST" class="d-inline">
+                                        <a href="{{ route('admin.category.edit', $k->kategori_id) }}"
+                                            class="btn btn-primary btn-sm">Edit</a>
+                                        <form action='{{ route('admin.category.delete', $k->kategori_id) }}' method="POST"
+                                            class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm"
@@ -61,9 +49,35 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="{{ route('admin.kategorisparepart.tambah-kategori') }}" class="btn btn-primary btn-sm">Tambah Kategori</a>
+                <a href="{{ route('admin.category.create') }}" class="btn btn-primary btn-sm">Tambah
+                    Kategori</a>
             </div>
         </div>
-        
     </div>
-    @endsection
+
+    <script>
+        $(document).ready(function() {
+            $('#searchBtn').click(function() {
+                var searchTerm = $('#searchTerm').val();
+
+                $.ajax({
+                    url: '{{ route('search') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        searchTerm: searchTerm
+                    },
+                    success: function(response) {
+                        var categories = response.categories;
+                        var html = '<ul>';
+                        categories.forEach(function(category) {
+                            html += '<li>' + category.nama_kategori + '</li>';
+                        });
+                        html += '</ul>';
+                        $('#results').html(html);
+                    }
+                });
+            });
+        });
+    </script>
+@endsection
