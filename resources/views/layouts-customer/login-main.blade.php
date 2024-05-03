@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     @yield('css-tambahan')
+    @notifyCss
 </head>
 
 <body class="bg-gradient-primary">
@@ -37,6 +38,9 @@
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
     @yield('js-tambahan')
+    @notifyJs
+
+    <x-notify::notify />
 
 </body>
 

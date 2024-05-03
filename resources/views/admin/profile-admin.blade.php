@@ -1,11 +1,11 @@
-@extends('layouts-customer.dashboard-customer')
+@extends('layouts-admin.dashboard-admin')
 @section('page-content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Hallo, {{ $user->nama_customer }}</h1>
+            <h1 class="h3 mb-0 text-gray-800">Hallo, {{ $admin->nama_admin }}</h1>
         </div>
         <!-- Content Row -->
         <div class="container-fluid">
@@ -19,19 +19,19 @@
                             <!-- Formulir data diri -->
                             <div class="mb-3">
                                 <p class="text-dark">Nama Lengkap:</p>
-                                <p>{{ $user->nama_customer }}</p>
+                                <p>{{ $admin->nama_admin }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Username:</p>
-                                <p>{{ $user->username }}</p>
+                                <p>{{ $admin->username }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Email:</p>
-                                <p>{{ $user->email }}</p>
+                                <p>{{ $admin->email }}</p>
                             </div>
                             <div class="mb-3">
                                 <p class="text-dark">Nomor Telepon:</p>
-                                <p>{{ $user->no_telp }}</p>
+                                <p>{{ $admin->no_telp }}</p>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="card-body">
                             <!-- Formulir unggah gambar -->
-                            <form action="{{ route('customer.profile-ganti-password') }}" method="POST">
+                            <form action="#" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="forsm-label">New Password</label>
@@ -54,7 +54,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Retype Password</label>
-                                    <input type="password" class="form-control" name="password_confirmation" placeholder="password">
+                                    <input type="password" class="form-control" name="password_confirmation"
+                                        placeholder="password">
                                     @error('password_confirmation')
                                         <small">{{ $message }}</small>
                                         @enderror

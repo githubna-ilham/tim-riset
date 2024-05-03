@@ -5,7 +5,7 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Kelola Akun Admin</h1>
+            <h1 class="h3 mb-0 text-gray-800">Kelola Akun Customer</h1>
         </div>
 
         <!-- Content table -->
@@ -16,25 +16,23 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Admin</th>
-                                <th>Username</th>
+                                <th>Nama</th>
                                 <th>Email</th>
-                                <th>No. Telepon</th>
+                                <th>No.Telp</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($admin as $admin)
+                            @foreach ($customers as $user)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $admin->nama_admin }}</td>
-                                    <td>{{ $admin->username }}</td>
-                                    <td>{{ $admin->email }}</td>
-                                    <td>{{ $admin->no_telp }}</td>
+                                    <td>{{ $user->nama_customer }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->no_telp }}</td>
                                     <td>
-                                        <a href="{{ route('admin.edit-akun-admin', $admin->admin_id) }}"
+                                        <a href="{{ route('admin.control-customer.edit', $user->customer_id) }}"
                                             class="btn btn-primary btn-sm">Edit</a>
-                                        <form action='{{ route('admin.hapus-akun-admin', $admin->admin_id) }}'
+                                        <form action="{{ route('admin.control-customer.delete', $user->customer_id) }}"
                                             method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -47,7 +45,8 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="{{ route('admin.buat-akun-admin') }}" class="btn btn-primary btn-sm">Tambah Akun Admin</a>
+                <a href="{{ route('admin.control-customer.create') }}" class="btn btn-primary btn-sm">Tambah Akun
+                    Customer</a>
             </div>
         </div>
     @endsection
