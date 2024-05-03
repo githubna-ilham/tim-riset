@@ -30,6 +30,18 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
+    // Route untuk Control Akun
+    Route::get('/dashboard/kontrol-pengguna', [AdminDashboardController::class, 'KontrolPengguna'])->name('admin.kontrol-pengguna');
+    Route::delete('/dashboard/kontrol-pengguna/{customer_id}', [AdminDashboardController::class, 'HapusAkun'])->name('admin.hapus-akun');
+
+    // Rute untuk KategoriSparepart
+    Route::get('/kategorisparepart', [KategoriSparepartController::class, 'index'])->name('admin.kategorisparepart.index');
+    Route::get('/tambah-kategori', [KategoriSparepartController::class, 'create'])->name('admin.kategorisparepart.tambah-kategori');
+    Route::post('/tambah-kategori', [KategoriSparepartController::class, 'store'])->name('admin.kategorisparepart.store');
+    Route::delete('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'destroy'])->name('admin.kategorisparepart.delete');
+    Route::get('/kategorisparepart/{kategorisparepart}/edit', [KategoriSparepartController::class, 'edit'])->name('admin.kategorisparepart.edit');
+    Route::put('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'update'])->name('admin.kategorisparepart.update');
+
     // Route untuk Control Akun Admin
     Route::get('/dashboard/kontrol-akun-admin', [AdminDashboardController::class, 'KontrolAkunAdmin'])->name('admin.kontrol-akun-admin');
     Route::delete('/dashboard/kontrol-akun-admin/{admin_id}', [AdminDashboardController::class, 'HapusAkunAdmin'])->name('admin.hapus-akun-admin');
@@ -45,16 +57,6 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::post('/dashboard/kontrol-akun-pengguna/proses-buat-akun-pengguna', [AdminDashboardController::class, 'ProsesBuatAkunPengguna'])->name('admin.proses-buat-akun-pengguna');
     Route::get('/dashboard/kontrol-akun-pengguna/edit_pengguna/{customer_id}', [AdminDashboardController::class, 'EditAkunPengguna'])->name('admin.edit-akun-pengguna');
     Route::post('/dashboard/kontrol-akun-pengguna/ganti-password/{customer_id}', [AdminDashboardController::class, 'GantiPasswordPengguna'])->name('admin.ganti-password-pengguna');
-
-
-    // Rute untuk KategoriSparepart
-        Route::get('/kategorisparepart', [KategoriSparepartController::class, 'index'])->name('admin.kategorisparepart.index');
-        Route::get('/tambah-kategori', [KategoriSparepartController::class, 'create'])->name('admin.kategorisparepart.tambah-kategori');
-        Route::post('/tambah-kategori', [KategoriSparepartController::class, 'store'])->name('admin.kategorisparepart.store');
-        Route::delete('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'destroy'])->name('admin.kategorisparepart.delete');
-        Route::get('/kategorisparepart/{kategorisparepart}/edit', [KategoriSparepartController::class, 'edit'])->name('admin.kategorisparepart.edit');
-        Route::put('/kategorisparepart/{kategorisparepart}', [KategoriSparepartController::class, 'update'])->name('admin.kategorisparepart.update');
-
 });
 
 
@@ -75,3 +77,4 @@ Route::middleware('auth:customer')->prefix('customer')->group(function () {
     Route::get('/dashboard/profile', [CustomerDashboardController::class, 'Profile'])->name('customer.profile');
     Route::post('/dashboard/profile/ganti-password', [CustomerDashboardController::class, 'GantiPassword'])->name('customer.profile-ganti-password');
 });
+
