@@ -5,14 +5,14 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Buat Akun Customer</h1>
+            <h1 class="h3 mb-0 text-gray-800">Buat Akun Admin</h1>
         </div>
 
         <!-- Content Row -->
         <div class="container-fluid w-75">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.proses-buat-akun-pengguna') }}" method="POST">
+                    <form action="{{ route('admin.control-admin.store') }}" method="POST">
                         @csrf
 
                         <h3 class="fs-4 text-dark">Data Diri</h3>

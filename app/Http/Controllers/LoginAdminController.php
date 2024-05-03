@@ -17,6 +17,7 @@ class LoginAdminController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt($credentials)) {
+            notify()->success('Berhasil login admin');
             // Jika berhasil login, redirect ke dashboard admin
             return redirect()->intended('/admin/dashboard');
         }
@@ -33,6 +34,7 @@ class LoginAdminController extends Controller
         Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        notify()->success('Berhasil logout');
         return redirect('/login-admin');
     }
 }
