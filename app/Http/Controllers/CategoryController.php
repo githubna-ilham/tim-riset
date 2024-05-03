@@ -90,7 +90,9 @@ class CategoryController extends Controller
 {
     $kategori = KategoriSparepart::find($kategori_id);
 
-    $kategori->sparepart()->delete();
+    // $kategori->sparepart()->delete();
+    // $kategori->sparepart()->detach(); detach() untuk menghapus relasi many to many
+    $kategori->sparepart()->update(['kategori_id' => null]); // update() untuk menghapus relasi one to many
     $kategori->delete();
     notify()->success('Category berhasil dihapus');
     return redirect()->route('admin.category.index');

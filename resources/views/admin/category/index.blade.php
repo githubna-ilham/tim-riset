@@ -54,30 +54,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        $(document).ready(function() {
-            $('#searchBtn').click(function() {
-                var searchTerm = $('#searchTerm').val();
-
-                $.ajax({
-                    url: '{{ route('search') }}',
-                    type: 'POST',
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        searchTerm: searchTerm
-                    },
-                    success: function(response) {
-                        var categories = response.categories;
-                        var html = '<ul>';
-                        categories.forEach(function(category) {
-                            html += '<li>' + category.nama_kategori + '</li>';
-                        });
-                        html += '</ul>';
-                        $('#results').html(html);
-                    }
-                });
-            });
-        });
-    </script>
 @endsection
