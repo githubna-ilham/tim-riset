@@ -9,64 +9,55 @@
         </div>
 
         <!-- Content Row -->
-        <div class="container-fluid w-75">
+        <div class="container-fluid w-50 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin.edit-info-sparepart', $sparepart->sparepart_id) }}" method="POST">
+                    <form action="{{ route('admin.sparepart.update', $sparepart->sparepart_id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="forsm-label">Nama Sparepart</label>
-                            <input type="plain" class="form-control" name="nama_sparepart"
-                                value="{{ $sparepart->nama_sparepart }}">
+                            <input type="text" class="form-control @error('nama_sparepart') is-invalid @enderror" name="nama_sparepart"
+                                value="{{ old('nama_sparepart', $sparepart->nama_sparepart) }}">
                             @error('nama_sparepart')
-                                <small">{{ $message }}</small>
-                                @enderror
+                                <small>{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="forsm-label">Merk</label>
-                            <input type="text" class="form-control" name="merk"
-                                value="{{ $sparepart->merk }}">
+                            <input type="text" class="form-control @error('merk') is-invalid @enderror" name="merk"
+                                value="{{ old('merk', $sparepart->merk) }}">
                             @error('merk')
-                                <small">{{ $message }}</small>
-                                @enderror
+                                <small>{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="forsm-label">Harga</label>
-                            <input type="text" class="form-control" name="harga"
-                                value="{{ $sparepart->harga }}">
+                            <input type="text" class="form-control @error('harga') is-invalid @enderror" name="harga"
+                                value="{{ old('harga', $sparepart->harga) }}">
                             @error('harga')
-                                <small">{{ $message }}</small>
-                                @enderror
+                                <small>{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="forsm-label">Stok</label>
-                            <input type="number" class="form-control" name="stok"
-                                value="{{ $sparepart->stok }}">
+                            <input type="number" class="form-control @error('stok') is-invalid @enderror" name="stok"
+                                value="{{ old('stok', $sparepart->stok) }}">
                             @error('stok')
-                                <small">{{ $message }}</small>
-                                @enderror
+                                <small>{{ $message }}</small>
+                            @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="category" class="form-label">Category</label>
-                            <select class="form-select" name="category_id">
+                            <label for="kategori_id" class="form-label">Kategori</label>
+                            <select class="form-select" name="kategori_id">
                                 @foreach ($categories as $category)
-                                    @if (old('category_id') == $category->id)
-                                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                    @if (old('kategori_id', $sparepart->kategori_id) == $category->kategori_id)
+                                        <option value="{{ $category->kategori_id }}" selected>{{ $category->nama_kategori }}</option>
                                     @else
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->kategori_id }}">{{ $category->nama_kategori }}</option>
                                     @endif
                                 @endforeach
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <img class="img-preview img-fluid mb-3 col-sm-5">
-                            <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image">
-                            @error('image')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

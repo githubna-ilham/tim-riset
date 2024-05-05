@@ -24,30 +24,31 @@
                     <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama Sparepart</th>
-                                <th>Merk</th>
-                                <th>Kategory</th>
-                                <th>Stok</th>
-                                <th>Harga</th>
-                                <th>Image</th>
-                                <th>Aksi</th>
+                                <th class="text-center">No</th>
+                                <th class="text-center">Nama Sparepart</th>
+                                <th class="text-center">Merk</th>
+                                <th class="text-center">Kategory</th>
+                                <th class="text-center">Stok</th>
+                                <th class="text-center">Harga</th>
+                                <th class="text-center">Image</th>
+                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($sparepart as $sparepart)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $sparepart->nama_sparepart }}</td>
-                                    <td>{{ $sparepart->merk }}</td>
-                                    <td>#</td>
-                                    <td>{{ $sparepart->stok }}</td>
-                                    <td>{{ $sparepart->harga }}</td>
-                                    <td>{{ $sparepart->image }}</td>
-                                    <td>
-                                        <a href="{{ route('admin.edit-sparepart', $sparepart->sparepart_id) }}"
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td class="text-center">{{ $sparepart->nama_sparepart }}</td>
+                                    <td class="text-center">{{ $sparepart->merk }}</td>
+                                    <td class="text-center">{{ $sparepart->kategori->nama_kategori }}</td>
+                                    <td class="text-center">{{ $sparepart->stok }}</td>
+                                    <td class="text-center">{{ $sparepart->formatRupiah('harga') }}</td>
+                                    <td class="text-center"><a href="#"
+                                        class="btn btn-primary btn-sm">Lihat Gambar</a></td>
+                                    <td class="text-center">
+                                        <a href="{{ route('admin.sparepart.edit', $sparepart->sparepart_id) }}"
                                             class="btn btn-primary btn-sm">Edit</a>
-                                        <form action='{{ route('admin.hapus-sparepart', $sparepart->sparepart_id) }}'
+                                        <form action='{{ route('admin.sparepart.delete', $sparepart->sparepart_id) }}'
                                             method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -60,7 +61,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="#" class="btn btn-primary btn-sm">Tambah Sparepart</a>
+                <a href="{{ route('admin.sparepart.create') }}" class="btn btn-primary btn-sm">Tambah Sparepart</a>
             </div>
         </div>
     @endsection
