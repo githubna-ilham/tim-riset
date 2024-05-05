@@ -83,8 +83,6 @@
                 <h6 class="collapse-header">Kelola Akun:</h6>
                 <a class="collapse-item" href="{{ route('admin.control-customer.index') }}">Details</a>
                 <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Kategori:</h6>
-                <a class="collapse-item" href="{{ route('admin.category.index') }}">Daftar Kategori</a>
             </div>
         </div>
     </li>
@@ -99,7 +97,7 @@
         <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kelola Sparepart:</h6>
-                <a class="collapse-item" href="{{ route('admin.kontrol-sparepart') }}">Details</a>
+                <a class="collapse-item" href="{{ route('admin.sparepart.index') }}">Details</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Kategori:</h6>
                 <a class="collapse-item" href="{{ route('admin.category.index') }}">Daftar Kategori</a>
