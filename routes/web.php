@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginCustomerController;
 use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\VehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,4 +77,9 @@ Route::post('/logout-customer', [LoginCustomerController::class, 'logout'])->nam
 Route::middleware('auth:customer')->prefix('customer')->group(function () {
     Route::get('/', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
     Route::get('/dashboard', [CustomerDashboardController::class, 'index'])->name('customer.dashboard');
+
+    // Route untuk kendaraan customer
+    Route::get('/dashboard/kendaraan', [VehicleController::class, 'indexVehicle'])->name('customer.vehicle.index');
+    Route::get('/dashboard/kendaraan/detail-kendaraan', [VehicleController::class, 'detailVehicle'])->name('customer.vehicle.detail');
+    Route::get('/dashboard/kendaraan/tambah-kendaraan', [VehicleController::class, 'createVehicle'])->name('customer.vehicle.create');
 });

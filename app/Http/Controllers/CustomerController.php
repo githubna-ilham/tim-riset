@@ -14,30 +14,5 @@ use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
-    // Profile Customer
-    public function profileCustomer()
-    {
-        $user = Auth::user();
-        return view('customer.profile-customer', [
-            'user' => $user
-        ]);
-    }
-
-    // Update password customer
-    public function updateCustomer(Request $request)
-    {
-        $ValidasiData = Validator::make($request->all(), [
-            'password' => 'required|min:8|confirmed'
-        ]);
-
-        if ($ValidasiData->fails()) {
-            return redirect()->back()->withInput()->withErrors($ValidasiData);
-        }
-
-        $user = Customer::find(Auth::user()->customer_id);
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        return redirect()->route('customer.profile-customer')->with('success', 'Password berhasil diubah');
-    }
+    // code here
 }
