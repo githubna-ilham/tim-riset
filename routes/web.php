@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginCustomerController;
 use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\SparepartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,11 +60,13 @@ Route::middleware('auth:admin')->prefix('admin')->group(function () {
     Route::put('/kategorisparepart/{kategorisparepart}', [CategoryController::class, 'updateCategory'])->name('admin.category.update');
 
 
-    // Route untuk Control Sparepart
-    Route::get('/dashboard/sparepart/kontrol-sparepart', [AdminDashboardController::class, 'KontrolSparepart'])->name('admin.kontrol-sparepart');
-    Route::delete('/dashboard/sparepart/kontrol-sparepart/{sparepart_id}', [AdminDashboardController::class, 'HapusSparepart'])->name('admin.hapus-sparepart');
-    Route::get('/dashboard/sparepart/kontrol-sparepart/edit_sparepart/{sparepart_id}', [AdminDashboardController::class, 'EditSparepart'])->name('admin.edit-sparepart');
-    Route::post('/dashboard/sparepart/kontrol-sparepart/edit_info_sparepart/{customer_id}', [AdminDashboardController::class, 'EditInfoSparepart'])->name('admin.edit-info-sparepart');
+    // Route untuk Sparepart
+    Route::get('/sparepart', [SparepartController::class, 'indexSparepart'])->name('admin.sparepart.index');
+    Route::get('/create-sparepart', [SparepartController::class, 'createSparepart'])->name('admin.sparepart.create');
+    Route::post('/create-sparepart', [SparepartController::class, 'storeSparepart'])->name('admin.sparepart.store');
+    Route::delete('/sparepart/{sparepart_id}', [SparepartController::class, 'deleteSparepart'])->name('admin.sparepart.delete');
+    Route::get('/sparepart/{sparepart_id}/edit', [SparepartController::class, 'editSparepart'])->name('admin.sparepart.edit');
+    Route::put('/sparepart/{sparepart_id}', [SparepartController::class, 'updateSparepart'])->name('admin.sparepart.update');
 });
 
 
